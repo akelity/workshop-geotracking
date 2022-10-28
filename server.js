@@ -15,27 +15,12 @@ let sockets = {}
 // Socket.io
 io.on('connection', function(socket) {
     console.log('Socket Connected ', socket.id);
-    sockets[socket.id] = socket;
     
-    socket.on('positionToServer', function (data) {
-        console.log('positionToServer ', data);
-        Object.keys(sockets).forEach(key => {
-            sockets[key].emit('positionToClient', {
-                id: socket.id,
-                ...data
-            });
-        });
-    });
 
     //Whenever someone disconnects this piece of code executed
     socket.on('disconnect', function () {
         console.log('Socket disconnected ', socket.id);
-        Object.keys(sockets).forEach(key => {
-            sockets[key].emit('deleteToClient', {
-                id: socket.id
-            });
-        });
-        delete sockets[socket.id]
+        
     });
 });
 
