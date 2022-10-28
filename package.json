@@ -1,0 +1,19 @@
+{
+  "name": "geo_app",
+  "version": "0.0.1ß",
+  "description": "GeoTracking App",
+  "author": "Michel Murabito <mich.murabito@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "node:start": "nodemon server.js",
+    "docker:start": "docker run --rm -p 3000:3000 -v $(pwd):/usr/src/app workshop",
+    "docker:build": "docker build -t workshop ."
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

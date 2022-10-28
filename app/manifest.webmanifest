@@ -1,0 +1,17 @@
+{
+  "short_name": "GeoTracking",
+  "name": "GeoTracking Workshop",
+  "icons": [
+    {
+      "src": "/img/icon-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "id": "/",
+  "start_url": "/",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "theme_color": "#3367D6",
+  "description": "GeoTRacking"
+}
