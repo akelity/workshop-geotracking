@@ -13,17 +13,6 @@
     // Socket
     const socket = io("ws://localhost:3000");
     
-    // Generazione GUID
-    const generateGUID = () => {
-        let s4 = () => {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                .toString(16)
-                .substring(1);
-        }
-        //"c2181edf-041b-0a61-3651-79d671fa3db7"
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    };
-    
     // BOT Script
     const bot = () => {
         const path = [
@@ -93,11 +82,9 @@
             [9.189634,45.467294]
         ];
         let index = 0;
-        const botID = generateGUID();
 
         setInterval(function() {
             socket.emit('positionToServer', {
-                id: botID,
                 latitude: path[index][1],
                 longitude: path[index][0]
             });

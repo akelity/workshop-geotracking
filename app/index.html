@@ -74,24 +74,13 @@
 
     // Listen for remove points
     socket.on('deleteToClient', function (data) {
+        console.log("Socket receive deleteToClient: ", data);
         delete points[data.id];
         layer.getSource().clear();
         Object.keys(points).forEach(key => {
             addMarker(points[key]);
         });
     });
-    
-    // Generate GUID
-    const generateGUID = () => {
-        let s4 = () => {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                .toString(16)
-                .substring(1);
-        }
-        //"c2181edf-041b-0a61-3651-79d671fa3db7"
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    };
-    const guid = generateGUID();
     
     // watch GPS position
     const activeWatchPosition = (user, id, offset) => {
@@ -101,7 +90,6 @@
             navigator.geolocation.watchPosition((position) => {
                 const { latitude, longitude } = position.coords;
                 socket.emit('positionToServer', {
-                    id: guid,
                     latitude: latitude,
                     longitude: longitude
                 });
