@@ -15,7 +15,11 @@ let sockets = {}
 // Socket.io
 io.on('connection', function(socket) {
     console.log('Socket Connected ', socket.id);
-    
+
+    socket.on('positionToServer', function (data) {
+        console.log('positionToServer ', data);
+
+    });
 
     //Whenever someone disconnects this piece of code executed
     socket.on('disconnect', function () {
